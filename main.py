@@ -31,18 +31,39 @@ def print_welcome():
     print('*' * 50)
     print('What would you like to do today?')
     print('[C] Create client')
+    print('[U] Update client')
     print('[D] Delete client')
+
+
+def update_client(client_name):
+    """Update client."""
+    global clients
+    if client_name in clients:
+        updated_client_name = _get_client_name('new name')
+        clients = clients.replace(client_name + ',', updated_client_name + ',')
+        list_clients()
+    else:
+        print('Client not found!')
+
+
+def _get_client_name(type_to_manage='name'):
+    """Get the client name."""
+    return input('What is the client {}: '.format(type_to_manage))
 
 
 if __name__ == '__main__':
     print_welcome()
     command = input()
+    command = command.upper()
 
     if(command == 'C'):
-        client_name = input('What is the client name? ')
+        client_name = _get_client_name()
         create_client(client_name)
         list_clients()
     elif command == 'D':
         pass
+    elif command == 'U':
+        client_name = _get_client_name()
+        update_client(client_name)
     else:
         print('Invalid command')
