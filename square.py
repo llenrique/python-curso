@@ -4,7 +4,7 @@ import turtle
 
 tortuga = turtle.Turtle()
 
-long = 1
+long = 50
 
 tortuga.forward(long)
 tortuga.right(90)     # Rotate clockwise by 90 degrees
